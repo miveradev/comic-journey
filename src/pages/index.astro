@@ -13,7 +13,7 @@ const { data: comics } = await supabase.from('comics').select('*');
 		<h1>ComicJourney</h1>
 		<h3 class="ml-40 mb-6 font-bold text-xl">Marvel Master Reading Order Part 1</h3>
 		<!-- Tailwind Timeline -->
-		<ol class="relative border-s-2 border-red-700 ml-40">
+		<ol class="relative border-s-2 pl-4 border-red-700 ml-44">
 			{comics?.map((comic) => 
 				<Series title={comic.title} year={comic.year} issue_name={comic.issue_name ?? ''} issues={JSON.parse(comic.issues)}></Series>
 			)}
