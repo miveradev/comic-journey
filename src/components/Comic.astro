@@ -1,0 +1,20 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+function assignIdToTitle (title: string) : string {
+    return title.toLowerCase().replace('#', '').replace(' ', '-');
+}
+
+const id = assignIdToTitle(title);
+---
+
+<li class="ms-4">
+    <div class="flex items-center me-4 gap-4 pb-2 pt-2 rounded-lg cursor-pointer hover:bg-red-950 w-64 transition-all">
+        <label for={id} class="select-none ms-2 text-sm font-medium text-gray-300 w-48 cursor-pointer">{title}</label>
+        <input id={id} type="checkbox" value="" class="w-4 h-4 accent-red-600 text-red-600 rounded focus:ring-red-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600">
+    </div>
+</li>
