@@ -1,23 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Series from '../components/Series.astro';
+
+import { supabase } from '../lib/supabase';
+
+const { data: comics } = await supabase.from('comics').select('*');
+
 ---
 
 <Layout title="ComicJourney">
 	<main>
 		<h1>ComicJourney</h1>
 		<h3 class="ml-40 mb-6 font-bold text-xl">Marvel Master Reading Order Part 1</h3>
-
 		<!-- Tailwind Timeline -->
 		<ol class="relative border-s-2 border-red-700 ml-40">
-			<Series title='Thor: Son of Asgard' year='2001' issue_name='' issues={[1,2,3,4,5,6,7,8,9,10,11,12]}></Series>
-			<Series title='Wolverine: Origin' year='2004' issue_name='Origin' issues={[1,2,3,4,5,6]}></Series>
-			<Series title='Wolverine: Origin II' year='2001' issue_name='Origin II' issues={[1,2,3,4,5]}></Series>
-			<Series title='Captain America (vol.1)' year='1963' issue_name='Captain America' issues={[255]}></Series>
-			<Series title='Marvels' year='19994' issue_name='' issues={[0,1]}></Series>
+			{comics?.map((comic) => 
+				<Series title={comic.title} year={comic.year} issue_name={comic.issue_name ?? ''} issues={JSON.parse(comic.issues)}></Series>
+			)}
 		</ol>
-
-
 	</main>
 </Layout>
 
