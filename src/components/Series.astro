@@ -10,9 +10,9 @@ interface Props {
 
 const { title, year, issue_name, issues} = Astro.props;
 ---
-<div class="mb-10">
-    <time class="mb-1 ml-2 text-sm font-normal leading-none text-gray-500">{year}</time>
-    <h3 class="text-lg ml-2 font-semibold text-white mb-4">{title}</h3>
+<div class="mb-10 max-sm:mb-6">
+    <time class="mb-1 ml-2 text-sm font-normal leading-none text-gray-500 max-sm:text-xs">{year}</time>
+    <h3 class="text-lg ml-2 font-semibold text-white mb-4 max-sm:text-base">{title}</h3>
         {issues.map((issue) => 
             <Comic title={(issue_name ? issue_name : title) + ' #' + issue.toString()}></Comic>
         )}

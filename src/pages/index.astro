@@ -9,11 +9,11 @@ const { data: comics } = await supabase.from('comics').select('*');
 ---
 
 <Layout title="ComicJourney">
-	<main>
-		<h1>ComicJourney</h1>
-		<h3 class="ml-40 mb-6 font-bold text-xl">Marvel Master Reading Order Part 1</h3>
+	<main class="flex flex-col justify-center items-center">
+		<h1 class="font-bold text-6xl mb-10 max-sm:text-3xl max-sm:mb-6">ComicJourney</h1>
+		<h3 class="mb-6 font-bold text-xl max-sm:text-sm max-sm:font-medium">Marvel Master Reading Order Part 1</h3>
 		<!-- Tailwind Timeline -->
-		<ol class="relative border-s-2 pl-4 border-red-700 ml-44">
+		<ol class="relative border-s-2 pl-4 border-red-700">
 			{comics?.map((comic) => 
 				<Series title={comic.title} year={comic.year} issue_name={comic.issue_name ?? ''} issues={JSON.parse(comic.issues)}></Series>
 			)}
@@ -31,16 +31,5 @@ const { data: comics } = await supabase.from('comics').select('*');
 		color: white;
 		font-size: 20px;
 		line-height: 1.6;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	h3 {
-		font-weight: 600;
-		line-height: 1;
 	}
 </style>
